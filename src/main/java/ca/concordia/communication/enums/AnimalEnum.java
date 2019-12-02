@@ -5,15 +5,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public enum ObjectType {
-    BIRD, HOUSE, OTHER, ANIMAL, AIRPLANE;
+public enum AnimalEnum {
+    FLYING_ANIMAL, LAND_ANIMAL;
 
-    private static final List<ObjectType> VALUES =
+    private static final List<AnimalEnum> VALUES =
             Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
 
-    public static ObjectType randomObjectType() {
+    public static AnimalEnum randomAnimal() {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 }

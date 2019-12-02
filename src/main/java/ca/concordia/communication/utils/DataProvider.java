@@ -1,17 +1,17 @@
 package ca.concordia.communication.utils;
 
+import ca.concordia.communication.enums.AirplaneEnum;
+import ca.concordia.communication.enums.AnimalEnum;
 import ca.concordia.communication.enums.BirdEnum;
-import ca.concordia.communication.objects.Bird;
-import ca.concordia.communication.objects.House;
-import ca.concordia.communication.objects.Other;
-
-import java.util.UUID;
+import ca.concordia.communication.objects.*;
 
 public class DataProvider {
 
     private static final String BIRD = "bird";
     private static final String HOUSE = "house";
     private static final String OTHER = "other";
+    private static final String ANIMAL = "animal";
+    private static final String AIRPLANE = "airplane";
 
     private static final String DEFAULT_DESCRIPTION = "Unidentified Object";
 
@@ -29,7 +29,7 @@ public class DataProvider {
 
     public static House generateHouse(){
         House house = new House();
-        house.setId(UUID.randomUUID());
+        house.setId(GeneralUtils.getRandomUUID());
         house.setPositionX(GeneralUtils.generateRandomDouble());
         house.setPositionY(GeneralUtils.generateRandomDouble());
         house.setPositionZ(GeneralUtils.generateRandomDouble());
@@ -41,7 +41,7 @@ public class DataProvider {
 
     public static Other generateOther(){
         Other other = new Other();
-        other.setId(UUID.randomUUID());
+        other.setId(GeneralUtils.getRandomUUID());
         other.setPositionX(GeneralUtils.generateRandomDouble());
         other.setPositionY(GeneralUtils.generateRandomDouble());
         other.setPositionZ(GeneralUtils.generateRandomDouble());
@@ -49,6 +49,36 @@ public class DataProvider {
         other.setObjectName(OTHER);
         other.setTime(GeneralUtils.generateTime());
         return other;
+    }
+
+    public static Animal generateAnimal(){
+        Animal animal = new Animal();
+        AnimalEnum animalEnum = AnimalEnum.randomAnimal();
+        if(animalEnum == AnimalEnum.FLYING_ANIMAL)
+            animal.setPositionZ(GeneralUtils.generateRandomDouble());
+        else
+            animal.setPositionZ(0.0);
+
+        animal.setAnimalType(AnimalEnum.randomAnimal());
+        animal.setId(GeneralUtils.getRandomUUID());
+        animal.setPositionX(GeneralUtils.generateRandomDouble());
+        animal.setPositionY(GeneralUtils.generateRandomDouble());
+        animal.setObjectName(ANIMAL);
+        animal.setTime(GeneralUtils.generateTime());
+        return animal;
+    }
+
+    public static Airplane generateAirplaine(){
+        Airplane airplane = new Airplane();
+        airplane.setId(GeneralUtils.getRandomUUID());
+        airplane.setPositionX(GeneralUtils.generateRandomDouble());
+        airplane.setPositionY(GeneralUtils.generateRandomDouble());
+        airplane.setPositionZ(GeneralUtils.generateRandomDouble());
+        airplane.setSize(GeneralUtils.generateRandomDouble());
+        airplane.setAirplaneType(AirplaneEnum.randomAirplane());
+        airplane.setObjectName(AIRPLANE);
+        airplane.setTime(GeneralUtils.generateTime());
+        return airplane;
     }
 
 }

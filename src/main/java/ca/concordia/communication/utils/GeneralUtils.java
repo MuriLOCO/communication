@@ -23,4 +23,13 @@ public class GeneralUtils {
         Random rd = new Random();
         return rd.nextBoolean();
     }
+
+    public static int generateRandomNumber(){
+        Random rd = new Random();
+        return rd.nextInt(30 - 5 + 1) + 5;
+    }
+
+    public static void waitTimer(int time) throws InterruptedException {
+        Thread.sleep(time);
+    }
 }
