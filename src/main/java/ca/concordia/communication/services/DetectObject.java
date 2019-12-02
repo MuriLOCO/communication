@@ -27,8 +27,8 @@ public class DetectObject{
                    other = DataProvider.generateOther();
                    break;
             }
-            Communicate.writeMessage(true, objectType, bird, house, other);
         }
+        Communicate.writeMessage(objectDetected, objectType, bird, house, other);
 
     }
 }
